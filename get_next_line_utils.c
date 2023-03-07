@@ -6,7 +6,7 @@
 /*   By: thclarac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:14:40 by thclarac          #+#    #+#             */
-/*   Updated: 2023/02/24 13:49:56 by thclarac         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:22:41 by thclarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ size_t	ft_strlen(const char *str)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	sizetotal;
+	int		sizetotal;
+	int		i;
+	int		j;
 	char	*res;
-	int	i;
-	int	j;
 
 	i = 0;
 	sizetotal = ft_strlen(s1) + ft_strlen(s2);
-	res = malloc(sizeof(char) * (sizetotal + 1));
-	if (!res || !s1 || !s2)
+	res = malloc((sizeof(char) * sizetotal) + 1);
+	if (!res)
 		return (NULL);
 	while (s1[i] != '\0')
 	{
@@ -40,9 +40,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	j = 0;
-	while (s2[i] != '\0')
+	while (s2[j] != '\0')
 	{
-		res[i] = s2[i];
+		res[i] = s2[j];
 		i++;
 		j++;
 	}
@@ -52,7 +52,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 char	*ft_strchr(const char *string, int searchedchar)
 {
-	char *str;
+	char	*str;
 
 	str = (char *) string;
 	while (*str != searchedchar && *str != '\0')
@@ -68,11 +68,11 @@ void	ft_bzero(void *s, size_t n)
 	char	*str;
 	size_t	i;
 
-	str = (char*)s;
+	str = (char *)s;
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
-		str[i] = '0';
+		str[i] = 0;
 		i++;
 	}
 }

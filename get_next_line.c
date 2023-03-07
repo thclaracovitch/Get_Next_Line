@@ -6,7 +6,7 @@
 /*   By: thclarac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:51:11 by thclarac          #+#    #+#             */
-/*   Updated: 2023/03/03 14:36:39 by thclarac         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:26:51 by thclarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ char	*ft_free(char *buffer, char *buf)
 
 char	*ft_next(char *buffer)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*line;
 
 	i = 0;
@@ -33,7 +33,7 @@ char	*ft_next(char *buffer)
 	if (!buffer[i])
 	{
 		free(buffer);
-		return (NULL)
+		return (NULL);
 	}
 	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
 	i++;
@@ -47,7 +47,7 @@ char	*ft_next(char *buffer)
 char	*ft_line(char *buffer)
 {
 	char	*line;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!buffer[i])
@@ -69,11 +69,14 @@ char	*ft_line(char *buffer)
 char	*read_file(int fd, char *res)
 {
 	char	*buffer;
-	int	byte_read;
+	int		byte_read;
 
 	if (!res)
-		res = ft_calloc(1, 1);
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	{
+		res = malloc(1);
+		res[0] = '\0';
+	}
+	buffer = malloc(BUFFER_SIZE + 1 * sizeof(char));
 	byte_read = 1;
 	while (byte_read > 0)
 	{
@@ -95,7 +98,7 @@ char	*read_file(int fd, char *res)
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char	*line;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
