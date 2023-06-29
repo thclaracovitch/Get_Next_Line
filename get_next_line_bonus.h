@@ -6,13 +6,15 @@
 /*   By: thclarac <thclarac@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 10:52:41 by thclarac          #+#    #+#             */
-/*   Updated: 2023/04/07 10:28:37 by thclarac         ###   ########.fr       */
+/*   Updated: 2023/06/29 10:41:45 by thclarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
-# define BUFFER_SIZE 5
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 # define FD_SIZE 1024 
 
 # include <stdlib.h>

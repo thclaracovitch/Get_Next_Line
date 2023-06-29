@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thclarac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thclarac <thclarac@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:51:11 by thclarac          #+#    #+#             */
-/*   Updated: 2023/03/07 10:26:51 by thclarac         ###   ########.fr       */
+/*   Updated: 2023/06/29 10:56:21 by thclarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ char	*ft_next(char *buffer)
 		return (NULL);
 	}
 	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
-	i++;
 	j = 0;
-	while (buffer[i])
-		line[j++] = buffer[i++];
+	while (buffer[i + j])
+	{
+		line[j] = buffer[i + j + 1];
+		j++;
+	}
 	free(buffer);
 	return (line);
 }
@@ -55,6 +57,8 @@ char	*ft_line(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
+	if (!line)
+		return (0);
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
